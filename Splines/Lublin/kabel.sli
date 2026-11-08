@@ -1,0 +1,44 @@
+File created By Jonpol
+
+---------------------------
+         Textures
+---------------------------
+
+[texture]
+ks.dds
+
+---------------------------
+     Graphical Lanes
+---------------------------
+
+[profile]
+0
+[profilepnt]
+-0.01
+5.12
+1.0
+0.2
+
+[profilepnt]
+-0.01
+5.15
+0.0
+0.2
+
+[profilepnt]
+0.01
+5.15
+0.0
+0.2
+
+[profilepnt]
+0.01
+5.12
+0.0
+0.2
+
+[profilepnt]
+-0.01
+5.12
+0.0
+0.2
