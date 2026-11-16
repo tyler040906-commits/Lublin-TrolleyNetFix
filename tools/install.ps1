@@ -1,4 +1,4 @@
-﻿param(
+param(
     [string]$OmsiRoot,
     [string]$MapName = 'Projekt_Lublin_2017',
     [switch]$Revert,
@@ -99,7 +99,7 @@ New-Item -ItemType Directory -Force -Path $work | Out-Null
 $workTiles = Join-Path $work 'tiles'
 $workO3d = Join-Path $work 'o3d'
 
-Write-Host '[1/4] generating contact splines with 15 m switch-neighbourhood collinear merge...'
+Write-Host '[1/4] generating contact splines with global collinear merge (2 m preserved around switches)...'
 Run-Tool (Join-Path $tools 'lib\rewrite_map_splines_merged.ps1') @(
     '-Txt', (Join-Path $pkg 'data\trolley.network.txt'),
     '-SourceMap', $origTiles,
@@ -138,7 +138,7 @@ foreach ($f in Get-ChildItem -LiteralPath $workTiles -Filter 'tile_*.map') {
         if ($L[$i].Trim() -eq '[spline]' -and $L[$i + 2].Trim() -match '(trolejbus|kabel)\.sli$' -and ($L[$i + 4].Trim() -eq '-1' -or $L[$i + 5].Trim() -eq '-1')) { $minusOne++ }
     }
 }
-if ($tileCount -ne 273 -or $blockCount -ne 12698 -or $kabelCount -ne 1234 -or $minusOne -ne 0) {
+if ($tileCount -ne 273 -or $blockCount -ne 1529 -or $kabelCount -ne 1234 -or $minusOne -ne 0) {
     throw ("generated output check failed: tiles=$tileCount trolejbus=$blockCount kabel=$kabelCount minusOne=$minusOne")
 }
 if ((Get-ChildItem -LiteralPath $workO3d -Filter '*.o3d').Count -ne 7) { throw 'expected 7 generated O3D files' }
