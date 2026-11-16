@@ -1,4 +1,6 @@
-# Lublin-TrolleyNetFix
+﻿# Lublin-TrolleyNetFix
+
+**v0.1.1** — 2026-11-16
 
 ## English
 
